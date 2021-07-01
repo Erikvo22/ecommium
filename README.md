@@ -25,3 +25,13 @@ Las instrucciones para cada prueba están en el fichero README.md de cada espaci
 * [Full-Stack developer Saas](../../../-/tree/main/full-stack-saas)
 * [Ecommerce developer](../../../-/tree/main/ecommerce-developer)
 * [Dev-Ops](../../../-/tree/main/devops-aws)
+
+## Antes de empezar las pruebas
+Haz un fork de este repositorio y márcalo como privado.
+
+Una vez hayas terminado la prueba crea un Merge Request e invítanos para poder ver lo que has hecho :thumbsup: (Las instrucciones con los detalles para revisar tu prueba te los
+enviaremos por email).
+
+## ¿Qué hago después de finalizar la prueba?
+Si nos invitas a tu repositorio privado GitLab nos notificará inmediatamente pero como las cosa a veces fallan avísanos también por email :
+pray:
