@@ -33,5 +33,4 @@ Una vez hayas terminado la prueba crea un Merge Request e invítanos para poder 
 enviaremos por email).
 
 ## ¿Qué hago después de finalizar la prueba?
-Si nos invitas a tu repositorio privado GitLab nos notificará inmediatamente pero como las cosa a veces fallan avísanos también por email :
-pray:
+Si nos invitas a tu repositorio privado GitLab nos notificará inmediatamente pero como las cosa a veces fallan avísanos también por email ✉️
