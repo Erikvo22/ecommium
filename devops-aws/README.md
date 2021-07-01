@@ -21,9 +21,11 @@ de los mismos recursos informáticos.
   costo/rendimiento) para el procesado y el guardado de los datos.
   * Para simplificar la configuración de todos los servicios involucrados en la nube usaré alguna herramienta para orquestar todo el proceso de despliegue. 
   
+
 * Yo como desarrollador recibiré el contenido del cuerpo de la petición POST:
   * añadiré marcas de tiempo (created_at, finished_at) y guardaré los datos en la base de datos correspondiente.
   * NOTA: para la marca de tiempo finished_at se puede meter un delay para ver las diferencias de tiempo.
+
 
 * Yo como usuario final de la aplicación quiero hacer una llamada a un endpoint para arrancar el procesado masivo a demanda:
   * Tener un punto de acceso (API REST) para poder crear una solicitud de procesado (POST) pasando como cuerpo de la petición un JSON con un identificador único UUID y un texto que describa la acción (Puede ser un ENUM con cualquier dato).
