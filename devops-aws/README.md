@@ -1,4 +1,4 @@
-# Reto Dev-Ops: Microservicio para guardar en DynamoDB los datos pasados a través de una API REST.
+# Reto Dev-Ops: Microservicio para guardar en base de datos los datos pasados a través de una API REST.
 
 ## Importante
 
@@ -18,7 +18,7 @@ de los mismos recursos informáticos.
 * Yo como encargado de la parte de IT de la compañía quiero mejorar esta situación e independizar el proceso de tratamiento masivo de datos, para ello propongo:
   * Usar un proveedor cloud para poder escalar horizontalmente y acelerar el procesado.
   * Proponer los detalles de infraestructura (qué servicios de AWS pueden ser los más adecuados en cuanto a
-  costo/rendimiento) para el procesado y el guardado de los datos.
+  costo/rendimiento) para el procesado y el guardado de los datos (se propone el uso de DynamoDB o similar).
   * Para simplificar la configuración de todos los servicios involucrados en la nube usaré alguna herramienta para orquestar todo el proceso de despliegue. 
   
 
