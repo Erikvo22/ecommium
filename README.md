@@ -22,6 +22,6 @@ Procura que tus commits revelen la intencionalidad de cada cambio (atomicidad de
 
 Las instrucciones para cada prueba están en el fichero README.md de cada espacio de trabajo:
 
-* [Full-Stack developer Saas](https://gitlab.com/sellboost-public/sellboost-coding-tests/-/tree/main/full-stack-saas)
-* [Ecommerce developer](https://gitlab.com/sellboost-public/sellboost-coding-tests/-/tree/main/ecommerce-developer)
-* [Dev-Ops](https://gitlab.com/sellboost-public/sellboost-coding-tests/-/tree/main/devops-aws)
+* [Full-Stack developer Saas](-/tree/main/full-stack-saas)
+* [Ecommerce developer](-/tree/main/ecommerce-developer)
+* [Dev-Ops](-/tree/main/devops-aws)
