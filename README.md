@@ -29,7 +29,8 @@ Las instrucciones para cada prueba están en el fichero README.md de cada espaci
 ## Antes de empezar las pruebas
 Haz un fork de este repositorio y márcalo como privado.
 
-Una vez hayas terminado la prueba crea un Merge Request e invítanos para poder ver lo que has hecho :thumbsup: (Las instrucciones con los detalles para revisar tu prueba te los
+Una vez hayas terminado la prueba crea un Merge Request e invítanos para poder ver lo que has hecho :thumbsup: 
+(Las instrucciones con los detalles para revisar tu prueba te los
 enviaremos por email).
 
 ## ¿Qué hago después de finalizar la prueba?
