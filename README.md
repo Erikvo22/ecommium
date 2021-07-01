@@ -7,7 +7,7 @@ Según sea tu perfil, deberás hacer la prueba en el espacio (carpeta) correspon
 * Ecommerce developer, carpeta **ecommerce-developer**.
 * Dev-Ops, carpeta **devops-aws**
 
-# A tener en cuenta...
+# Consideraciones importantes
 Las pruebas para el perfil **Full-Stack developer** deberán realizarse usando PHP como lenguage de programación base.
 También podrán presentarse las pruebas realizadas con NodeJs (Javascript) o Typescript.
 
