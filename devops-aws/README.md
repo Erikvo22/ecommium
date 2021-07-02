@@ -1,34 +1,35 @@
-# Reto Dev-Ops: Microservicio para guardar en base de datos los datos pasados a través de una API REST.
+# Prueba técnica perfil DevOps
+Importante: te recomendamos que leas antes las [consideraciones generales](../../../-/tree/main) comunes a todas las
+pruebas de este repositorio.
 
-## Importante
+## Introducción
+El objetivo de esta prueba es demostrar tus capacidades para definir y desplegar una arquitectura de un API HTTP en AWS.
 
-Si has llegado directamente a este espacio de trabajo te recomendamos que leas antes
-las [consideraciones generales a tener en cuenta](../../../-/tree/main).
+## Descripción de tareas
+Debes crear la arquitectura de una API HTTP sencilla que solo responda a peticiones POST para ser procesadas y almacenadas 
+en una base de datos.
 
-## Descripción general
-El objetivo de esta prueba es generar una API REST sencilla que solo responda a peticiones de creación de recursos (POST).
-El contenido de la petición deberá ser procesado añadiendo marcas de tiempo (created_at, finished_at) en el objeto JSON recibido y el mismo contenido deberá ser guardado en base de datos.
+**Petición de ejemplo:**
 
-## Historias de usuario
-* Yo como experto del dominio o product owner quiero agilizar el procesado masivo de ciertos datos críticos para nuestro sistema de Business Intelligence.
-Actualmente ese procesado es lento y a veces bloquea el funcionamiento de nuestra principal vía de negocio por hacer uso
-de los mismos recursos informáticos.
+`POST https://base_url/api_endpoint`
 
+```json5
+{
+  "id": "2282866f-32b5-44d1-828d-d400cd1f088f",
+  "message": "Mensaje a guardar"
+}
+```
 
-* Yo como encargado de la parte de IT de la compañía quiero mejorar esta situación e independizar el proceso de tratamiento masivo de datos, para ello propongo:
-  * Usar un proveedor cloud para poder escalar horizontalmente y acelerar el procesado.
-  * Proponer los detalles de infraestructura (qué servicios de AWS pueden ser los más adecuados en cuanto a
-  costo/rendimiento) para el procesado y el guardado de los datos (se propone el uso de DynamoDB o similar).
-  * Para simplificar la configuración de todos los servicios involucrados en la nube usaré alguna herramienta para orquestar todo el proceso de despliegue. 
-  
+**Respuestas:**
 
-* Yo como desarrollador recibiré el contenido del cuerpo de la petición POST:
-  * añadiré marcas de tiempo (created_at, finished_at) y guardaré los datos en la base de datos correspondiente.
-  * NOTA: para la marca de tiempo finished_at se puede meter un delay para ver las diferencias de tiempo.
+* 201 CREATED: si todo ha ido bien.
+* 500 ERROR: si hubo un error de cualquier tipo (falta el campo id o message en la petición, falla el guardado, etc).
 
+Se propone que el API HTTP se publique como una función en AWS Lambda y que el guardado en la base de datos se haga en un 
+contenedor de Docker. Puedes escoger el lenguaje de programación que prefieras en cada caso, en que servicio de AWS
+lanzas el contenedor y en que tipo / servicio de base de datos de AWS guardas los datos.
 
-* Yo como usuario final de la aplicación quiero hacer una llamada a un endpoint para arrancar el procesado masivo a demanda:
-  * Tener un punto de acceso (API REST) para poder crear una solicitud de procesado (POST) pasando como cuerpo de la petición un JSON con un identificador único UUID y un texto que describa la acción (Puede ser un ENUM con cualquier dato).
-    
-## Criterios de aceptación
-* La llamada a la API debe devolver un código de éxito si todo ha ido bien o un código de error si el cuerpo de la petición no está bien formado.
+Por ejemplo podrías lanzar el contenedor en un clúster de AWS Fargate y usar como base de datos DynamoDB.
+
+Debes utilizar un sistema que permita desplegar la solución en AWS de la forma más automatizada que puedas y en la que 
+tengas más experiencia. Por ejemplo: Terraform, Gitlab pipelines, Ansible, etc.
