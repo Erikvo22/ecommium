@@ -12,17 +12,17 @@ Somos fans de los principios [SOLID](https://levelup.gitconnected.com/solid-prin
 Arquitectura Hexagonal y DDD. Si tienes experiencia o conocimientos en alguno de estos enfoques intenta aplicarlos en las 
 pruebas.
 
-Entendemos que en una proyecto tan pequeño, para poder demostrar tus habilidades es posible que haya que hacer la solución
+Entendemos que en un proyecto tan pequeño, para poder demostrar tus habilidades es posible que haya que hacer la solución
 algo más compleja de lo que realmente sería necesario, intentando encontrar el equilibrio entre mantenimiento y complejidad.
 
 Preferimos que implementes el API con controladores muy simples que hagan uso de uno o más servicios en los que se derive 
 la lógica, usando la inyección de dependencias donde creas necesario. La operativa con la base de datos nos gustaría que 
 se hiciera usando el patrón [Repository](https://medium.com/@cesiztel/repository-pattern-en-laravel-f66fcc9ea492).
 
-Para terminar, lo ideal es que hubiera test unitarios de los servicios que usados en el API, mockeando los colaboradores.
+Para terminar, lo ideal es que hubiera test unitarios de los servicios usados en el API, mockeando los colaboradores.
 
 Si no tienes todos los conocimientos que pedimos en la prueba, no te preocupes e intenta hacer tu código y la solución lo 
-más limpia y que puedas, teniendo en cuenta el mantenimiento del código de todo el stack.
+más limpia que puedas, teniendo en cuenta el mantenimiento del código de todo el stack.
 
 ## Historias de usuario
 
