@@ -25,8 +25,35 @@ Si no tienes todos los conocimientos que pedimos en la prueba, no te preocupes e
 más limpia que puedas, teniendo en cuenta el mantenimiento del código de todo el stack.
 
 ## Historias de usuario
+* Yo como encargado del equipo de Análisis Financiero necesito una herramienta que nos permita 
+la creación y la ejecución de procesos a demanda siguiendo las siguientes pautas:
+  * Cada proceso tiene que estar identificado con alguno de los siguientes tipos: EXTRACT, ANALYZE, COMPILE.
+  * Cada proceso contendrá datos de apoyo para cada tipo de proceso. Estos datos se guardarán como parte de los datos del proceso. 
+  * Los procesos se pueden crear mediante un botón y crearlos y arrancarlos mediante otro botón. 
+  * Los procesos serán mostrados en un listado para analizar su estado y poder iniciar aquellos que todavía no han sido iniciados mediante un botón en el mismo listado. 
 
+### Interfaz de usuario
 
+Desde el departamento de UX/UI nos han dado la primera versión de la interfaz de usuario de la herramienta a modo orientativo.
+
+Nos aconsejan usar el framework [Bootstrap](https://getbootstrap.com/) pero nos dejan libre elección en cuanto al framework y paleta de colores.
+
+#### Crear Procesos
+![Crear procesos](resources/create_process.png)
+
+#### Listar Procesos
+![Listar procesos](resources/processes_list.png)
+
+### Arquitectura
+
+Aunque en esta prueba no es necesario procesar de manera asíncrona los datos dejaremos preparada la infraestructura para
+permitir este caso en el futuro. Para ello vemos necesaria la implementación en NodeJS del procesado final de los procesos.
+
+Desde el API BACKEND se hará una llamada a un script hecho en Node que reciba la información del proceso. Debes modificar la propiedad ***data*** del proceso añadiendo cualquier tipo de información que creas conveniente.
+
+Una vez actualizado el proceso harás una petición a un webhook del API BACKEND para que el nuevo estado sea persistido en base de datos.
+
+(Ver más abajo la información sobre el webhook).
 
 ### Apéndice: peticiones de ejemplo
 Tanto los clientes como el servidor deberán hacer uso de las cabeceras HTTP correctas para enviar y recibir JSON.
