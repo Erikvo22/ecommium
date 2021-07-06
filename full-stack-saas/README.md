@@ -49,7 +49,7 @@ Nos aconsejan usar el framework [Bootstrap](https://getbootstrap.com/) pero nos 
 Aunque en esta prueba no es necesario procesar de manera asíncrona los datos dejaremos preparada la infraestructura para
 permitir este caso en el futuro. Para ello vemos necesaria la implementación en NodeJS del procesado final de los procesos.
 
-Desde el API BACKEND se hará una llamada a un script hecho en Node que reciba la información del proceso. Debes modificar la propiedad ***data*** del proceso añadiendo cualquier tipo de información que creas conveniente.
+Desde el API BACKEND se hará una llamada a un script hecho en Node que reciba la información del proceso. Una vez tengas los datos en Node debes modificar la propiedad ***data*** del proceso añadiendo cualquier tipo de información que creas conveniente.
 
 Una vez actualizado el proceso harás una petición a un webhook del API BACKEND para que el nuevo estado sea persistido en base de datos.
 
