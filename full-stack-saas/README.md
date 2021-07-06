@@ -28,7 +28,7 @@ más limpia que puedas, teniendo en cuenta el mantenimiento del código de todo 
 * Yo como encargado del equipo de Análisis Financiero necesito una herramienta que nos permita 
 la creación y la ejecución de procesos a demanda siguiendo las siguientes pautas:
   * Cada proceso tiene que estar identificado con alguno de los siguientes tipos: EXTRACT, ANALYZE, COMPILE.
-  * Cada proceso contendrá datos de apoyo para cada tipo de proceso. Estos datos se guardarán como parte de los datos del proceso. 
+  * Cada proceso contendrá datos de apoyo para cada tipo de proceso (en este caso los datos son de libre elección). Estos datos se guardarán como parte de los datos del proceso. 
   * Los procesos se pueden crear mediante un botón y crearlos y arrancarlos mediante otro botón. 
   * Los procesos serán mostrados en un listado para analizar su estado y poder iniciar aquellos que todavía no han sido iniciados mediante un botón en el mismo listado. 
 
