@@ -42,10 +42,6 @@ en el texto de entrada al proceso.
 Como administrador de Foo Corp quiero poder lanzar procesos de tipo CONSONANTS_COUNT que calcule el número de consonantes
 en el texto de entrada al proceso.
 
-### Criterios de aceptación
-1. Se debe cumplir la especificación del API descrita en el apéndice correspondiente.
-2. Debe haber un stack completo: Front + API backend + scripts de procesos + base de datos para almacenar los procesos.  
-
 ### Mockup de la interfaz de usuario
 Desde el departamento de UX/UI nos han dado una primera versión de la interfaz de usuario de la herramienta a modo orientativo:
 
@@ -53,8 +49,8 @@ Desde el departamento de UX/UI nos han dado una primera versión de la interfaz 
 * [Creación de procesos](resources/create_process.png)
 
 ### Detalles de la arquitectura
-Te proponemos una o varias opciones preferibles por ser nuestro stack actual. Pero puedes hacerlo en otros stacks si te 
-sientes más cómodo siempre que sea en el ecosistema de PHP y NodeJS.
+Te proponemos una o varias opciones "preferibles" por ser nuestro stack actual. Pero puedes hacerlo con otras tecnologías si te 
+sientes más cómodo siempre que la base sea con el ecosistema de PHP y NodeJS.
 
 * Frontend: preferible en React o VueJS y usando los componentes de [Bootstrap](https://getbootstrap.com/).
 * API backend: preferible PHP con Laravel o Symfony.
@@ -66,9 +62,21 @@ Cada aplicación de la arquitectura debería estar en una subcarpeta diferente. 
 * ./backend/
 * ./processes/
 
+También deberás añadir un fichero en formato md / txt con unas instrucciones para ejecutar el código.
+
+Con PHP la versión mínima será la 7 o superior, fijándote en añadir todos los tipos donde sea necesario.
+
+Con NodeJS la versión mínima será la 10 o superior, con preferencia de usar async / await para la gestión de promises
+en lugar de callbacks.
+
 Cuando se inicie un proceso, deberá ejecutar el script correspondiente de Nodejs, pasando los datos de entrada al proceso. 
 Ejemplo: `node script.js "texto de entrada"`. La ejecución en la primera versión será síncrona, pero esperamos en el 
 futuro que sea asíncrona, por ejemplo lanzándose directamente en Docker, por lo que habrá que tenerlo en cuenta en la solución.
+
+### Criterios de aceptación
+1. Código sin errores ni warnings.
+2. Se debe cumplir la especificación de la arquitectura y la del API descrita en el apéndice.
+3. Debe haber código del stack completo: Front + API backend + scripts de procesos + base de datos para almacenar los procesos.
 
 ### Apéndice: especificación del API de gestión de procesos
 Tanto los clientes como el servidor deberán hacer uso de las cabeceras HTTP correctas para enviar y recibir JSON.
