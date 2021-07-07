@@ -31,7 +31,7 @@ lo demás se puede aprender, si tu base de conocimientos es suficientemente sól
 Como administrador de Foo Corp necesito una herramienta que permita crear y ejecutar procesos a demanda siguiendo las 
 siguientes pautas:
   * Tendrán un tipo que identificará que tarea deben realizar.
-  * Recibirán un texto de entrada que se suministrarán al crearlo. La longitud máxima será de 500 caracteres. 
+  * Recibirán un texto de entrada que se suministrarán al crearlo. La longitud máxima será de 100 caracteres. 
   * Se deben poder crear en un formulario web. Habrá un botón de "crear proceso" y otro de "crear e iniciar proceso".
   * Se mostrarán en un listado para analizar su estado e iniciar los procesos que no hayan sido iniciados aún.
   * Cuando se inicie y finalice la ejecución de un proceso, debera actualizarse su estado.
@@ -62,14 +62,15 @@ Cada aplicación de la arquitectura debería estar en una subcarpeta diferente. 
 * ./backend/
 * ./processes/
 
-También deberás añadir un fichero en formato md / txt con unas instrucciones para ejecutar el código.
+Para el desarrollo usa el sistema que prefieras (Docker, Vagrant, entorno local, etc).
+Deberás añadir un fichero en formato md / txt con unas instrucciones mínimas para ejecutar tu código correctamente.
 
 Con PHP la versión mínima será la 7 o superior, fijándote en añadir todos los tipos donde sea necesario.
 
 Con NodeJS la versión mínima será la 10 o superior, con preferencia de usar async / await para la gestión de promises
 en lugar de callbacks.
 
-Cuando se inicie un proceso, deberá ejecutar el script correspondiente de Nodejs, pasando los datos de entrada al proceso. 
+Cuando se inicie un proceso por el API, deberá ejecutar el script correspondiente de NodeJS, pasando los datos de entrada al proceso. 
 Ejemplo: `node script.js "texto de entrada"`. La ejecución en la primera versión será síncrona, pero esperamos en el 
 futuro que sea asíncrona, por ejemplo lanzándose directamente en Docker, por lo que habrá que tenerlo en cuenta en la solución.
 
@@ -154,21 +155,21 @@ Respuestas:
 #### Webhook proceso finalizado
 `POST https://base_url/api/process/2282866f-32b5-44d1-828d-d400cd1f088f/finished`
 
-Ejemplo body finalización sin errores (OK):
+Ejemplo de body petición finalización sin errores (OK):
 ```json5
 {
   "status": "OK",
-  "input": "Text data",
+  "output": "5",
   "finished_at": "2021-07-05T11:56:59.745013Z"
 }
 ```
 
-Ejemplo body finalización con errores (KO):
+Ejemplo de body petición finalización con errores (KO):
 ```json5
 {
   "status": "KO",
-  "error_message": "Error xxxx",
-  "input": "Text data",
+  "error_message": "Error message foo",
+  "output": "",
   "finished_at": "2021-07-05T11:56:59.745013Z"
 }
 ```
