@@ -1,5 +1,5 @@
 # Prueba técnica perfil DevOps
-Importante: te recomendamos que leas antes las [consideraciones generales](../../../-/tree/main) comunes a todas las
+> **Importante:** lee antes las [consideraciones generales](../../../-/tree/main) comunes a todas las
 pruebas de este repositorio.
 
 ## Introducción

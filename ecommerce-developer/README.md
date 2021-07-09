@@ -1,10 +1,8 @@
 # Prueba técnica perfil ecommerce-developer
-
-Importante: te recomendamos que leas antes las [consideraciones generales](../../../-/tree/main) comunes a todas las 
+> **Importante:** lee antes las [consideraciones generales](../../../-/tree/main) comunes a todas las
 pruebas de este repositorio.
 
-## Introducción 
-
+## Introducción
 El objetivo de esta prueba es demostrar tus capacidades para desarrollar un módulo para extraer datos de una
 plataforma de ecommerce: Prestashop, Magento, Wordpress con Woocommerce y/o Shopify.
 
@@ -15,7 +13,6 @@ de cada una para escribir código PHP compatible.
 Ejemplo: Prestashop 1.6 podría ser instalado en PHP 5.2+ y Prestashop 1.7 en PHP 5.4+.
 
 # Descripción de tareas
-
 Debes implementar un módulo instalable en la plataforma para poder extraer datos usando una API HTTP. Para la prueba puedes 
 ignorar cualquier concepto de autentificación y autorización.
 

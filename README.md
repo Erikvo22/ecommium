@@ -8,7 +8,7 @@ Deberás hacer la prueba en el espacio (carpeta) correspondiente donde encontrar
 * [Dev-Ops](../../../-/tree/main/devops-aws) carpeta **devops-aws**
 
 ## Consideraciones generales a todas las pruebas
-**Lo más importante:** si tienes alguna duda de lo que hay que hacer o te gustaría cambiar algo de la prueba para adaptarlo mejor a 
+> **Lo más importante:** si tienes alguna duda de lo que hay que hacer o te gustaría cambiar algo de la prueba para adaptarlo mejor a 
 tus habilidades, no dudes en contactar con nosotros.
 
 Valoraremos que tu estilo de código se base en estándares como PSR en PHP, o que al menos tu propio estilo sea limpio, 
@@ -21,5 +21,5 @@ Procura que tus commits revelen la intencionalidad de cada cambio (atomicidad de
 
 ## Antes de empezar las pruebas
 Te enviaremos por email las instrucciones con los detalles de tu prueba.
-1. Haz un fork y configúralo como privado.
+1. Haz un fork privado.
 2. Una vez hayas terminado la prueba, invítanos al repo para poder revisarla. :thumbsup:
