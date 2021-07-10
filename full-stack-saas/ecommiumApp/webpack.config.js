@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+const { VueLoaderPlugin } = require('vue-loader')
 
 Encore
     .setOutputPath('public/build')
@@ -8,6 +9,8 @@ Encore
     .addEntry('app', './assets/js/app.js')
 
     .cleanupOutputBeforeBuild()
+
+    .addPlugin(new VueLoaderPlugin())
 
     .enableVueLoader()
 
