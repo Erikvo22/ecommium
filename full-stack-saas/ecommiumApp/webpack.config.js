@@ -10,6 +10,8 @@ Encore
 
     .cleanupOutputBeforeBuild()
 
+    .enableBuildNotifications()
+
     .addPlugin(new VueLoaderPlugin())
 
     .enableVueLoader()
