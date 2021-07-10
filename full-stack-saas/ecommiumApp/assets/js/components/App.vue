@@ -1,5 +1,5 @@
 <template>
-  <h2>Welcomemela</h2>
+  <h2 class="text-center">Listado de procesos</h2>
 </template>
 
 <script>
