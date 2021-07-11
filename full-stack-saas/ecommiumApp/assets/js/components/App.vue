@@ -36,7 +36,8 @@
           </tr>
           </tbody>
         </table>
-        <p class="text-center font-weight-bold" style="color: red" v-if="processes.length === 0">Not Results</p>
+        <p v-if="(processes.length === 0) && (!loading)" class="text-center font-weight-bold" style="color: red">Not Results</p>
+        <p v-if="loading" class="text-center">Loading...</p>
       </div>
     </div>
     <div v-if="showCreateProcess">
@@ -54,6 +55,7 @@ export default {
   data() {
     return {
       processes: [],
+      loading: false,
       showListProcesses: true,
       showCreateProcess: false
     }
@@ -63,9 +65,11 @@ export default {
   },
   methods: {
     allProcesses: function () {
+      this.loading = true;
       axios.get(urlGetAll)
           .then((response) => {
             this.processes = response.data.processes;
+            this.loading = false;
           })
     },
     showProcesses: function () {
