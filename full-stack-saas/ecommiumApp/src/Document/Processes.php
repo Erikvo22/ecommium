@@ -38,7 +38,7 @@ class Processes
      * @var \DateTime
      * @MongoDB\Field(type="date")
      */
-    protected $updatedAt;
+    protected $startedAt;
 
     /**
      * @var \DateTime
@@ -131,17 +131,17 @@ class Processes
     /**
      * @return \DateTime
      */
-    public function getUpdatedAt()
+    public function getStartedAt()
     {
-        return $this->updatedAt;
+        return $this->startedAt;
     }
 
     /**
      * @return bool
      */
-    public function hasUpdatedAt(): bool
+    public function hasStartedAt(): bool
     {
-        return (bool)$this->updatedAt;
+        return (bool)$this->startedAt;
     }
 
     /**
@@ -149,9 +149,9 @@ class Processes
      * @MongoDB\PreUpdate
      * @return static
      */
-    public function touchUpdatedAt()
+    public function touchStartedAt()
     {
-        $this->updatedAt = new \DateTime();
+        $this->startedAt = new \DateTime();
         return $this;
     }
 

@@ -13,31 +13,30 @@
             <th>Input</th>
             <th>Output</th>
             <th>Created at</th>
-            <th>Update at</th>
+            <th>Started at</th>
             <th>Finished at</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
           </thead>
-          <tbody>
-          <template v-for="p in processes">
-            <tr>
-              <td>{{ p.id }}</td>
-              <td>{{ p.input }}</td>
-              <td>{{ p.output }}</td>
-              <td>{{ p.createdAt }}</td>
-              <td>{{ p.updatedAt }}</td>
-              <td>{{ p.finishedAt }}</td>
-              <td v-if="p.status === 0">NOT STARTED</td>
-              <td v-if="p.status === 1">PROCESSING</td>
-              <td v-if="p.status === 2">FINISHED</td>
-              <td>
-                <button class="btn btn-success" v-if="p.status === 0" @click="">Start</button>
-              </td>
-            </tr>
-          </template>
+          <tbody v-for="p in processes">
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.input }}</td>
+            <td>{{ p.output }}</td>
+            <td>{{ p.createdAt }}</td>
+            <td>{{ p.startedAt }}</td>
+            <td>{{ p.finishedAt }}</td>
+            <td v-if="p.status === 0">NOT STARTED</td>
+            <td v-if="p.status === 1">PROCESSING</td>
+            <td v-if="p.status === 2">FINISHED</td>
+            <td>
+              <button class="btn btn-success" v-if="p.status === 0" @click="">Start</button>
+            </td>
+          </tr>
           </tbody>
         </table>
+        <p class="text-center font-weight-bold" style="color: red" v-if="processes.length === 0">Not Results</p>
       </div>
     </div>
     <div v-if="showCreateProcess">

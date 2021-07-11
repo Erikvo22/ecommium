@@ -39,7 +39,7 @@ class ProcessesController extends AbstractController
                 'input'      => $p->getInput(),
                 'output'     => $p->getOutput(),
                 'createdAt'  => $p->getCreatedAt()->format('Y-m-d H:i:s'),
-                'updatedAt'  => $p->getUpdatedAt()->format('Y-m-d H:i:s'),
+                'updatedAt'  => $p->getStartedAt() ? $p->getStartedAt()->format('Y-m-d H:i:s') : null,
                 'finishedAt' => $p->getFinishedAt() ? $p->getFinishedAt()->format('Y-m-d H:i') : null,
                 'status'     => $p->getStatus()
             );
@@ -49,7 +49,7 @@ class ProcessesController extends AbstractController
     }
 
     /**
-     * @Route("/create", methods="POST")
+     * @Route("/create")
      * @param Request $request
      * @return Response
      * @throws \Doctrine\ODM\MongoDB\MongoDBException
@@ -63,7 +63,6 @@ class ProcessesController extends AbstractController
             $process->setOutput('3');
             $process->setStatus('0');
             $process->touchCreatedAt();
-            $process->touchUpdatedAt();
 
             $this->documentManager->persist($process);
             $this->documentManager->flush();

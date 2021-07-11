@@ -9,7 +9,7 @@ class ProcessesRepository extends DocumentRepository
     public function findAllOrderedByCreatedAt()
     {
         return $this->createQueryBuilder()
-            ->sort('createdAt', 'ASC')
+            ->sort('createdAt', 'DESC')
             ->getQuery()
             ->execute();
     }
