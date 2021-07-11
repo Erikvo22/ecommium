@@ -6,6 +6,7 @@ use App\Document\Processes;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use PHPUnit\Util\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,17 +23,33 @@ class ProcessesController extends AbstractController
      */
     public function index(): Response
     {
-        $processes = $this->documentManager->getRepository(Processes::class)->findAllOrderedByCreatedAt();
-        var_dump($processes);
-
-        return $this->render('index/index.html.twig', [
-            'controller_name' => 'ProcessesController',
-            'data'            => $processes
-        ]);
+        return $this->render('index/index.html.twig');
     }
 
     /**
-     * @Route("/create", name="create")
+     * @Route("/data", methods="GET")
+     */
+    public function getAllProcessesAction()
+    {
+        $processes = $this->documentManager->getRepository(Processes::class)->findAllOrderedByCreatedAt();
+        $arrayData = [];
+        foreach ($processes as $p){
+            $arrayAux = array(
+                'id'         => $p->getId(),
+                'input'      => $p->getInput(),
+                'output'     => $p->getOutput(),
+                'createdAt'  => $p->getCreatedAt()->format('Y-m-d H:i:s'),
+                'updatedAt'  => $p->getUpdatedAt()->format('Y-m-d H:i:s'),
+                'finishedAt' => $p->getFinishedAt() ? $p->getFinishedAt()->format('Y-m-d H:i') : null,
+                'status'     => $p->getStatus()
+            );
+            array_push($arrayData, $arrayAux);
+        }
+        return new JsonResponse(array('processes' => $arrayData), 200);
+    }
+
+    /**
+     * @Route("/create", methods="POST")
      * @param Request $request
      * @return Response
      * @throws \Doctrine\ODM\MongoDB\MongoDBException

@@ -103,7 +103,7 @@ class Processes
     /**
      * @return \DateTime
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
@@ -131,7 +131,7 @@ class Processes
     /**
      * @return \DateTime
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
@@ -158,7 +158,7 @@ class Processes
     /**
      * @return \DateTime
      */
-    public function getFinishedAt(): \DateTime
+    public function getFinishedAt()
     {
         return $this->finishedAt;
     }
