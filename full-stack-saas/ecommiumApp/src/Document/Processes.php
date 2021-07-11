@@ -2,10 +2,11 @@
 
 namespace App\Document;
 
+use App\Repository\ProcessesRepository;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @MongoDB\Document
+ * @MongoDB\Document(repositoryClass=ProcessesRepository::class)
  */
 class Processes
 {
@@ -17,13 +18,13 @@ class Processes
 
     /**
      * @var string
-     * @MongoDB\String
+     * @MongoDB\Field(type="string")
      */
     protected $input;
 
     /**
      * @var string
-     * @MongoDB\String
+     * @MongoDB\Field(type="string")
      */
     protected $output;
 
