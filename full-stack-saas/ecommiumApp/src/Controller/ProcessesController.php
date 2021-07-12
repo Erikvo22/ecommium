@@ -41,7 +41,7 @@ class ProcessesController extends AbstractController
                 'output' => $p->getOutput(),
                 'createdAt' => $p->getCreatedAt()->format('Y-m-d H:i:s'),
                 'updatedAt' => $p->getStartedAt() ? $p->getStartedAt()->format('Y-m-d H:i:s') : null,
-                'finishedAt' => $p->getFinishedAt() ? $p->getFinishedAt()->format('Y-m-d H:i') : null,
+                'finishedAt' => $p->getFinishedAt() ? $p->getFinishedAt()->format('Y-m-d H:i:s') : null,
                 'status' => $p->getStatus()
             );
             array_push($arrayData, $arrayAux);
@@ -63,11 +63,14 @@ class ProcessesController extends AbstractController
             $data = $request->getContent();
             $data = json_decode($data);
             $input = isset($data->input) ? $data->input : '';
-            $action = isset($data->action) ? $data->action : 0;
+            $action = isset($data->action) ? (int)$data->action : 0;
 
             $process = new Processes();
             $process->setInput($input);
-            $process->setStatus((int)$action);
+            $process->setStatus($action);
+            if($action === 1){
+                $process->touchStartedAt();
+            }
             $process->touchCreatedAt();
             $this->documentManager->persist($process);
             $this->documentManager->flush();
@@ -79,7 +82,8 @@ class ProcessesController extends AbstractController
         }
         return new Response(json_encode(array(
             'error' => false,
-            'msg' => 'Created process id ' . $process->getId()
+            'msg' => 'Created process id ' . $process->getId(),
+            'id' => $process->getId()
         )), 200);
     }
 

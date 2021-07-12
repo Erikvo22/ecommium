@@ -121,23 +121,29 @@ export default {
     },
     createProcess: function (action) {
       this.msg = null;
-      axios.post(urlCreate,
-          {
-            type: this.typeSelected,
-            input: this.input,
-            action: action
-          })
-          .then((response) => {
-            this.msg = response.data.msg;
-            this.color = response.data.error ? 'color:red' : 'color:green';
-            if (!response.data.error) {
-              this.allProcesses();
-              if (action === '1') {
-                this.idProcess = response.data.id;
-                this.runProcess(this.idProcess);
+      var isVerified = this.verifyCreate();
+      if(!isVerified.error) {
+        axios.post(urlCreate,
+            {
+              type: this.typeSelected,
+              input: this.input,
+              action: action
+            })
+            .then((response) => {
+              this.msg = response.data.msg;
+              this.color = response.data.error ? 'color:red' : 'color:green';
+              if (!response.data.error) {
+                this.allProcesses();
+                if (action === 1) {
+                  this.idProcess = response.data.id;
+                  this.runProcess(this.idProcess);
+                }
               }
-            }
-          })
+            })
+      }else{
+        this.msg = isVerified.msg;
+        this.color = 'color:red';
+      }
     },
     runProcess: function (idProcess) {
       axios.put(urlUpdate,
@@ -147,6 +153,21 @@ export default {
           .then((response) => {
             this.allProcesses();
           })
+    },
+    verifyCreate: function () {
+      var array = {'error': false};
+      if (this.typeSelected === null || this.typeSelected < 1) {
+        array = {
+          'error': true,
+          'msg': 'Field Type cannot be empty'
+        }
+      } else if (this.input === '' || this.input === null) {
+        array = {
+          'error': true,
+          'msg': 'Field Input cannot be empty'
+        }
+      }
+      return array;
     }
   }
 }
