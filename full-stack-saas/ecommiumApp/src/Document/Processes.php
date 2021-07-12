@@ -87,7 +87,7 @@ class Processes
     /**
      * @return string
      */
-    public function getOutput(): string
+    public function getOutput()
     {
         return $this->output;
     }
