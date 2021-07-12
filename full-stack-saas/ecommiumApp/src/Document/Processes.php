@@ -17,6 +17,12 @@ class Processes
     protected $id;
 
     /**
+     * @var integer
+     * @MongoDB\Field(type="integer")
+     */
+    protected $type; //TODO: lo ideal es que este campo tire de otra tabla que contenga los diversos tipos
+
+    /**
      * @var string
      * @MongoDB\Field(type="string")
      */
@@ -66,6 +72,22 @@ class Processes
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param int $type
+     */
+    public function setType(int $type)
+    {
+        $this->type = $type;
     }
 
     /**

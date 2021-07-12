@@ -62,15 +62,13 @@ class ProcessesController extends AbstractController
         try {
             $data = $request->getContent();
             $data = json_decode($data);
+            $type = isset($data->type) ? (int)$data->type : 0;
             $input = isset($data->input) ? $data->input : '';
-            $action = isset($data->action) ? (int)$data->action : 0;
 
             $process = new Processes();
+            $process->setType($type);
             $process->setInput($input);
-            $process->setStatus($action);
-            if($action === 1){
-                $process->touchStartedAt();
-            }
+            $process->setStatus(0);
             $process->touchCreatedAt();
             $this->documentManager->persist($process);
             $this->documentManager->flush();
@@ -99,16 +97,18 @@ class ProcessesController extends AbstractController
             $data = $request->getContent();
             $data = json_decode($data);
             $id = isset($data->id) ? $data->id : null;
+            $output = null;
             if ($id) {
                 $process = $this->documentManager->getRepository(Processes::class)->find($id);
                 if ($process) {
-                    $inputToLower = strtolower($process->getInput());
-                    $output = substr_count($inputToLower, 'a') +
-                        substr_count($inputToLower, 'e') +
-                        substr_count($inputToLower, 'i') +
-                        substr_count($inputToLower, 'o') +
-                        substr_count($inputToLower, 'u');
-
+                    if($process->getType() === 1) { //VOWELS_COUNT
+                        $inputToLower = strtolower($process->getInput());
+                        $output = substr_count($inputToLower, 'a') +
+                            substr_count($inputToLower, 'e') +
+                            substr_count($inputToLower, 'i') +
+                            substr_count($inputToLower, 'o') +
+                            substr_count($inputToLower, 'u');
+                    }
                     $process->setOutput($output);
                     $process->touchFinishedAt();
                     $process->setStatus(2);
