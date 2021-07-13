@@ -9,7 +9,7 @@ class ProcessesControllerTest extends WebTestCase
     public function ntestGetAllProcesses()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/data');
+        $client->request('GET', '/data');
         $this->assertResponseIsSuccessful();
     }
 
@@ -17,8 +17,7 @@ class ProcessesControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $parameters = array('type' => 1, 'input' => 'hola que tal');
-        $crawler = $client->request('POST', '/create', $parameters);
-        var_dump($crawler);
+        $client->request('POST', '/create', $parameters);
         $this->assertResponseIsSuccessful();
     }
 
@@ -26,7 +25,7 @@ class ProcessesControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $parameters = array('id' => '60edf357cf12000057002432');
-        $crawler = $client->request('PUT', '/run', $parameters);
+        $client->request('PUT', '/run', $parameters);
         $this->assertResponseIsSuccessful();
     }
 }
