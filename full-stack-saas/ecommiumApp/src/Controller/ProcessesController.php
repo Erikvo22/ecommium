@@ -8,6 +8,7 @@ use PHPUnit\Util\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProcessesController extends AbstractController
@@ -40,7 +41,7 @@ class ProcessesController extends AbstractController
                 'input' => $p->getInput(),
                 'output' => $p->getOutput(),
                 'createdAt' => $p->getCreatedAt()->format('Y-m-d H:i:s'),
-                'updatedAt' => $p->getStartedAt() ? $p->getStartedAt()->format('Y-m-d H:i:s') : null,
+                'startedAt' => $p->getStartedAt() ? $p->getStartedAt()->format('Y-m-d H:i:s') : null,
                 'finishedAt' => $p->getFinishedAt() ? $p->getFinishedAt()->format('Y-m-d H:i:s') : null,
                 'status' => $p->getStatus()
             );
@@ -102,14 +103,19 @@ class ProcessesController extends AbstractController
                 $process = $this->documentManager->getRepository(Processes::class)->find($id);
                 if ($process) {
                     if($process->getType() === 1) { //VOWELS_COUNT
-                        $inputToLower = strtolower($process->getInput());
-                        $output = substr_count($inputToLower, 'a') +
-                            substr_count($inputToLower, 'e') +
-                            substr_count($inputToLower, 'i') +
-                            substr_count($inputToLower, 'o') +
-                            substr_count($inputToLower, 'u');
+                        $inputWithoutSpaces = str_replace(' ', '', $process->getInput());
+                        $processAction = new Process(['node', 'vowels.js', $inputWithoutSpaces], getcwd() . '\processes');
+                        $processAction->start();
+
+                        $process->touchStartedAt();
+                        $process->setStatus(1);
+                        $this->documentManager->flush();
+
+                        $processAction->wait();
+
+                        $output = $processAction->getOutput();
                     }
-                    $process->setOutput($output);
+                    $process->setOutput((int)$output);
                     $process->touchFinishedAt();
                     $process->setStatus(2);
                     $this->documentManager->flush();
