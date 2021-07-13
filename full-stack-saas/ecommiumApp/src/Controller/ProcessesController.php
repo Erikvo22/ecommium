@@ -61,10 +61,16 @@ class ProcessesController extends AbstractController
     public function createAction(Request $request): Response
     {
         try {
-            $data = $request->getContent();
-            $data = json_decode($data);
-            $type = isset($data->type) ? (int)$data->type : 0;
-            $input = isset($data->input) ? $data->input : '';
+            if($request->getContent()) {
+                $data = $request->getContent();
+                $data = json_decode($data);
+                $type = isset($data->type) ? (int)$data->type : 0;
+                $input = isset($data->input) ? $data->input : '';
+            }else{
+                $data = $request->request->all();
+                $type = isset($data['type']) ? (int)$data['type'] : 0;
+                $input = isset($data['input']) ? $data['input']: '';
+            }
 
             $process = new Processes();
             $process->setType($type);
@@ -95,16 +101,22 @@ class ProcessesController extends AbstractController
     public function runAction(Request $request): Response
     {
         try {
-            $data = $request->getContent();
-            $data = json_decode($data);
-            $id = isset($data->id) ? $data->id : null;
+            if($request->getContent()) {
+                $data = $request->getContent();
+                $data = json_decode($data);
+                $id = isset($data->id) ? $data->id : null;
+            }else{
+                $data = $request->request->all();
+                $id = isset($data['id']) ? $data['id'] : null;
+            }
             $output = null;
             if ($id) {
                 $process = $this->documentManager->getRepository(Processes::class)->find($id);
                 if ($process) {
                     if($process->getType() === 1) { //VOWELS_COUNT
                         $inputWithoutSpaces = str_replace(' ', '', $process->getInput());
-                        $processAction = new Process(['node', 'vowels.js', $inputWithoutSpaces], getcwd() . '\processes');
+                        $route = str_replace('\public', '', getcwd());
+                        $processAction = new Process(['node', 'vowels.js', $inputWithoutSpaces], $route . '\processes');
                         $processAction->start();
 
                         $process->touchStartedAt();
